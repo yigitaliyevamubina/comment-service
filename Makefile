@@ -1,5 +1,5 @@
 CURRENT_DIR=$(shell pwd)
-DB_URL := "postgres://postgres:mubina2007@localhost:5432?commentdb?sslmode=disable"
+DB_URL := "postgres://postgres:mubina2007@localhost:5432/commentdb?sslmode=disable"
 
 proto-gen:
 	chmod +x ./scripts/gen-proto.sh
