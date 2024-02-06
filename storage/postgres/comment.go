@@ -3,6 +3,7 @@ package postgres
 import (
 	pb "comment-service/genproto/comment_service"
 	"database/sql"
+
 	"github.com/google/uuid"
 )
 
@@ -52,7 +53,7 @@ func (c *commentRepo) GetAllCommentsByPostId(postId *pb.GetPostID) (*pb.AllComme
 	}
 
 	for rows.Next() {
-		var respComment pb.Comment
+		var respComment = pb.Comment{}
 		if err := rows.Scan(&respComment.Id,
 			&respComment.Content,
 			&respComment.OwnerId,
@@ -76,8 +77,11 @@ func (c *commentRepo) GetAllCommentsByOwnerId(ownerId *pb.GetOwnerID) (*pb.AllCo
 		return nil, err
 	}
 
+	if respComments.Comments == nil {
+		respComments.Comments = []*pb.Comment{}
+	}
 	for rows.Next() {
-		var respComment pb.Comment
+		var respComment = pb.Comment{}
 		if err := rows.Scan(&respComment.Id,
 			&respComment.Content,
 			&respComment.OwnerId,
