@@ -18,6 +18,7 @@ func NewCommentRepo(db *sql.DB) *commentRepo {
 }
 
 //rpc CreateComment(Comment) returns (Comment);
+//rpc GetCommentById(GetCommentId) returns (Comment);
 //rpc GetAllCommentsByPostId(GetPostID) returns (AllComments);
 //rpc GetAllCommentsByOwnerId(GetOwnerID) returns (AllComments);
 
@@ -41,6 +42,23 @@ func (c *commentRepo) CreateComment(comment *pb.Comment) (*pb.Comment, error) {
 	}
 
 	return comment, nil
+}
+
+func (c *commentRepo) GetCommentById(commentId *pb.GetCommentId) (*pb.Comment, error) {
+	query := `SELECT id, content, owner_id, post_id, created_at FROM comments WHERE id = $1`
+
+	rowComment := c.db.QueryRow(query, commentId.Id)
+	respComment := pb.Comment{}
+
+	if err := rowComment.Scan(&respComment.Id,
+		&respComment.Content,
+		&respComment.OwnerId,
+		&respComment.PostId,
+		&respComment.CreatedAt); err != nil {
+		return nil, err
+	}
+
+	return &respComment, nil
 }
 
 func (c *commentRepo) GetAllCommentsByPostId(postId *pb.GetPostID) (*pb.AllComments, error) {

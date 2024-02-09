@@ -52,11 +52,11 @@ func (Gender) EnumDescriptor() ([]byte, []int) {
 }
 
 type User struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	FirstName            string   `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName             string   `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Age                  int64    `protobuf:"varint,4,opt,name=age,proto3" json:"age,omitempty"`
-	Gender               Gender   `protobuf:"varint,5,opt,name=gender,proto3,enum=user.Gender" json:"gender,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	FirstName            string   `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name"`
+	LastName             string   `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name"`
+	Age                  int64    `protobuf:"varint,4,opt,name=age,proto3" json:"age"`
+	Gender               Gender   `protobuf:"varint,5,opt,name=gender,proto3,enum=user.Gender" json:"gender"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -131,14 +131,14 @@ func (m *User) GetGender() Gender {
 }
 
 type Comment struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Content              string   `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
-	PostId               string   `protobuf:"bytes,3,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
-	OwnerId              string   `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	CreatedAt            string   `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt            string   `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt            string   `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Owner                *User    `protobuf:"bytes,8,opt,name=owner,proto3" json:"owner,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	Content              string   `protobuf:"bytes,2,opt,name=content,proto3" json:"content"`
+	PostId               string   `protobuf:"bytes,3,opt,name=post_id,json=postId,proto3" json:"post_id"`
+	OwnerId              string   `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id"`
+	CreatedAt            string   `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt            string   `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	DeletedAt            string   `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at"`
+	Owner                *User    `protobuf:"bytes,8,opt,name=owner,proto3" json:"owner"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -234,11 +234,11 @@ func (m *Comment) GetOwner() *User {
 }
 
 type Post struct {
-	Id                   string     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title                string     `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	ImageUrl             string     `protobuf:"bytes,3,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
-	OwnerId              string     `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	Comments             []*Comment `protobuf:"bytes,5,rep,name=comments,proto3" json:"comments,omitempty"`
+	Id                   string     `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	Title                string     `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
+	ImageUrl             string     `protobuf:"bytes,3,opt,name=image_url,json=imageUrl,proto3" json:"image_url"`
+	OwnerId              string     `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id"`
+	Comments             []*Comment `protobuf:"bytes,5,rep,name=comments,proto3" json:"comments"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -313,12 +313,12 @@ func (m *Post) GetComments() []*Comment {
 }
 
 type UserWithPostsAndComments struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	FirstName            string   `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName             string   `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Age                  int64    `protobuf:"varint,4,opt,name=age,proto3" json:"age,omitempty"`
-	Gender               Gender   `protobuf:"varint,5,opt,name=gender,proto3,enum=user.Gender" json:"gender,omitempty"`
-	Posts                []*Post  `protobuf:"bytes,6,rep,name=posts,proto3" json:"posts,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	FirstName            string   `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name"`
+	LastName             string   `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name"`
+	Age                  int64    `protobuf:"varint,4,opt,name=age,proto3" json:"age"`
+	Gender               Gender   `protobuf:"varint,5,opt,name=gender,proto3,enum=user.Gender" json:"gender"`
+	Posts                []*Post  `protobuf:"bytes,6,rep,name=posts,proto3" json:"posts"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -400,7 +400,7 @@ func (m *UserWithPostsAndComments) GetPosts() []*Post {
 }
 
 type AllUsers struct {
-	Users                []*UserWithPostsAndComments `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Users                []*UserWithPostsAndComments `protobuf:"bytes,1,rep,name=users,proto3" json:"users"`
 	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
 	XXX_unrecognized     []byte                      `json:"-"`
 	XXX_sizecache        int32                       `json:"-"`
@@ -447,7 +447,7 @@ func (m *AllUsers) GetUsers() []*UserWithPostsAndComments {
 }
 
 type GetUserId struct {
-	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

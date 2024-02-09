@@ -29,6 +29,10 @@ func (c *CommentService) CreateComment(ctx context.Context, comment *pb.Comment)
 	return c.storage.Comment().CreateComment(comment)
 }
 
+func (c *CommentService) GetCommentById(ctx context.Context, req *pb.GetCommentId) (*pb.Comment, error) {
+	return c.storage.Comment().GetCommentById(req)
+}
+
 func (c *CommentService) GetAllCommentsByPostId(ctx context.Context, postId *pb.GetPostID) (*pb.AllComments, error) {
 	return c.storage.Comment().GetAllCommentsByPostId(postId)
 }
