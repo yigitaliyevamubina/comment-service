@@ -10,7 +10,6 @@ import (
 
 type CommentService struct {
 	storage storage.IStorage
-	logger  l.Logger
 }
 
 func NewCommentService(db *sql.DB, log l.Logger) *CommentService {
