@@ -11,13 +11,11 @@ import (
 type CommentService struct {
 	storage storage.IStorage
 	logger  l.Logger
-	pb.UnimplementedCommentServiceServer
 }
 
 func NewCommentService(db *sql.DB, log l.Logger) *CommentService {
 	return &CommentService{
 		storage: storage.NewStoragePg(db),
-		logger:  log, UnimplementedCommentServiceServer: pb.UnimplementedCommentServiceServer{},
 	}
 }
 
